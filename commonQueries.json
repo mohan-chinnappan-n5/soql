@@ -12,5 +12,10 @@
       "Events": "SELECT Id, Subject, StartDateTime, EndDateTime, Who.Name, What.Name FROM Event WHERE IsRecurrence = FALSE ORDER BY StartDateTime",
       "Custom Objects": "SELECT Id, Name, CustomField__c FROM CustomObject__c WHERE Active__c = TRUE ORDER BY CreatedDate DESC LIMIT 5",
       "File Storage": "SELECT CreatedBy.Name, ContentDocumentId, ContentSize, ContentDocument.FileType FROM ContentVersion ORDER BY ContentSize DESC"
+
+      ,"PermissionSetAssignment":"SELECT id,PermissionSetId, Assignee.Name, Assignee.id FROM PermissionSetAssignment"
+      ,"PermissionSetAssociatedProfiles":"SELECT Id, Label, ProfileId, Profile.Name FROM PermissionSet"
+
+      ,"AccountTeamMember": "SELECT Id ,Title ,AccountAccessLevel ,AccountId ,Account.Name ,Account.Industry ,UserId ,User.FirstName ,User.LastName ,TeamMemberRole ,CaseAccessLevel ,ContactAccessLevel ,OpportunityAccessLevel ,CurrencyIsoCode ,IsDeleted FROM AccountTeamMember "
     }
   }
