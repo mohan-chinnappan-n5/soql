@@ -17,5 +17,15 @@
       ,"PermissionSetAssociatedProfiles":"SELECT Id, Label, ProfileId, Profile.Name FROM PermissionSet"
 
       ,"AccountTeamMember": "SELECT Id ,Title ,AccountAccessLevel ,AccountId ,Account.Name ,Account.Industry ,UserId ,User.FirstName ,User.LastName ,TeamMemberRole ,CaseAccessLevel ,ContactAccessLevel ,OpportunityAccessLevel ,CurrencyIsoCode ,IsDeleted FROM AccountTeamMember "
+    
+      ,"ObjectPermissions":"SELECT Id, ParentId, SObjectType,PermissionsCreate,PermissionsRead,PermissionsEdit,PermissionsDelete,PermissionsViewAllRecords,PermissionsModifyAllRecords,Parent.label, Parent.IsOwnedByProfile  FROM ObjectPermissions " 
+    
+      ,"UserWithReadPermOnObject":"SELECT Assignee.Name, PermissionSet.Id, PermissionSet.isOwnedByProfile FROM PermissionSetAssignment WHERE PermissionSetId IN (SELECT ParentId FROM ObjectPermissions WHERE SObjectType = 'Account' AND PermissionsRead = true)"
+    
+      ,"GroupMember": "SELECT id,Group.Name,UserOrGroupId FROM GroupMember"
+      
+      ,"PermissionSetObjectFieldPerms": "SELECT Label, PermissionsTransferAnyLead, (SELECT SobjectType, PermissionsRead FROM ObjectPerms), (SELECT SobjectType, Field, PermissionsRead FROM FieldPerms) FROM PermissionSet"     
+
+      ,"EntityDefinition": "SELECT Id ,DurableId ,LastModifiedDate ,LastModifiedById ,QualifiedApiName ,NamespacePrefix ,DeveloperName ,MasterLabel ,Label ,PluralLabel ,DefaultCompactLayoutId ,IsCustomizable ,IsApexTriggerable ,IsWorkflowEnabled ,IsProcessEnabled ,IsCompactLayoutable ,DeploymentStatus ,KeyPrefix ,IsCustomSetting ,IsDeprecatedAndHidden ,IsReplicateable ,IsRetrieveable ,IsSearchLayoutable ,IsSearchable ,IsTriggerable ,IsIdEnabled ,IsEverCreatable ,IsEverUpdatable ,IsEverDeletable ,IsFeedEnabled ,IsQueryable ,IsMruEnabled ,DetailUrl ,EditUrl ,NewUrl ,EditDefinitionUrl ,HelpSettingPageName ,HelpSettingPageUrl ,RunningUserEntityAccessId ,PublisherId ,IsLayoutable ,RecordTypesSupported ,InternalSharingModel ,ExternalSharingModel ,HasSubtypes ,IsSubtype ,IsAutoActivityCaptureEnabled ,IsInterface ,ImplementsInterfaces ,ImplementedBy ,ExtendsInterfaces ,ExtendedBy ,DefaultImplementation FROM EntityDefinition  LIMIT 2000"
     }
   }
